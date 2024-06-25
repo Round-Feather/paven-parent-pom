@@ -44,8 +44,9 @@
         <open.pojo.version>0.9.1</open.pojo.version>
         <wiremock-standalone.version>3.6.0</wiremock-standalone.version>
         <unirest-java.version>4.0.0-RC2</unirest-java.version>
-        <pmd.version>3.23.0</pmd.version>
+        <pmd.version>3.21.2</pmd.version>
         <build-helper.version>3.6.0</build-helper.version>
+        <google-cloud.version>20.1.0</google-cloud.version>
 
     </properties>
 
@@ -62,6 +63,13 @@
                 <groupId>com.roundfeather.paven</groupId>
                 <artifactId>paven-maven-bom</artifactId>
                 <version>${paven-maven-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>libraries-bom</artifactId>
+                <version>${google-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -110,6 +118,10 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -152,6 +164,10 @@
         <dependency>
             <groupId>com.roundfeather.paven.utils</groupId>
             <artifactId>paven-cache-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.roundfeather.paven.utils</groupId>
+            <artifactId>paven-event-utils</artifactId>
         </dependency>
         <!-- others -->
         <dependency>
@@ -233,6 +249,11 @@
                                 <exclude>**/dto/**</exclude>
                                 <exclude>**/util/**</exclude>
                                 <exclude>**/utils/**</exclude>
+                                <exclude>**/api/**/model/**</exclude>
+                                <exclude>**/QuarkusCustomConfig**</exclude>
+                                <exclude>**/*Constants**</exclude>
+                                <exclude>**/mapper/**</exclude>
+                                <exclude>**/transformer/**</exclude>
                             </excludes>
                             <rules>
                                 <rule>
